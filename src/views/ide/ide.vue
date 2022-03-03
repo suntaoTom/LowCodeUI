@@ -1,9 +1,9 @@
 <template>
-  <div class="lz_attribute">
+  <div class="lcu_attribute">
     <button @click="viewClick" :disabled="pattern !== '1'">可视化</button>
     <button @click="diyClick" :disabled="pattern !== '0'">开发者</button>
-    <div class="lz_diy" v-if="pattern === '1'">
-      <div class="lz_attribute_header">
+    <div class="lcu_diy" v-if="pattern === '1'">
+      <div class="lcu_attribute_header">
         <button @click="jsClick" :disabled="apiBll">api</button>
         <button @click="cssClick" :disabled="cssBll">css</button>
         <button @click="resetApi">重置</button>
@@ -15,7 +15,7 @@
         ref="textarea"
       />
     </div>
-    <div class="lz_diy" v-else>
+    <div class="lcu_diy" v-else>
       <ViewTemplate
         v-if="pattern !== ''"
         :activeElement="activeElement"
@@ -304,7 +304,7 @@ export default class IDE extends Vue {
 </script>
 
 <style lang="scss">
-.lz_attribute {
+.lcu_attribute {
   top: 0rem;
   right: 0rem;
   width: 100%;
@@ -312,17 +312,17 @@ export default class IDE extends Vue {
   border: 1px solid black;
   background-color: #e9dfdf;
 }
-.lz_attribute textarea {
+.lcu_attribute textarea {
   width: 98%;
   height: 70%;
 }
-.lz_attribute_header {
+.lcu_attribute_header {
   text-align: left;
   button {
     margin: 2px;
   }
 }
-.lz_diy {
+.lcu_diy {
   height: 100%;
   width: 100%;
 }

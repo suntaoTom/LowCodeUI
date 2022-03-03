@@ -1,32 +1,32 @@
 <template>
-  <div class="lz_application">
-    <div class="lz_app_utils">
-      <button @click="lz_router">设置</button>
+  <div class="lcu_application">
+    <div class="lcu_app_utils">
+      <button @click="lcu_router">设置</button>
     </div>
-    <div class="lz_app">
-      <div class="lz_app_left">
-        <div class="lz_app_add">
-          <div class="lz_app_left_input">
+    <div class="lcu_app">
+      <div class="lcu_app_left">
+        <div class="lcu_app_add">
+          <div class="lcu_app_left_input">
             <input v-model="name" /> <button @click="create">add</button>
           </div>
           <h4>应用中心</h4>
         </div>
-        <div class="lz_app_lication">
+        <div class="lcu_app_lication">
           <div
             v-for="(item, index) in appInfo"
-            class="lz_app_lication_btn"
+            class="lcu_app_lication_btn"
             :key="index"
           >
             <div
               @click="appClick($event, item, index)"
               :index="index"
-              class="lz_app_lication_name"
-              :class="{ lz_select: select === index, lz_select_false: false }"
+              class="lcu_app_lication_name"
+              :class="{ lcu_select: select === index, lcu_select_false: false }"
             >
               {{ item.name }}
               <input
                 :value="item.name"
-                class="lz_edit"
+                class="lcu_edit"
                 @keyup.enter="keyupen($event, item)"
                 v-if="reNameIndex === index"
               />
@@ -34,33 +34,33 @@
           </div>
         </div>
       </div>
-      <div class="lz_app_right">
-        <div class="lz_app_right_header" v-if="select !== -1">
+      <div class="lcu_app_right">
+        <div class="lcu_app_right_header" v-if="select !== -1">
           名称：<input v-model="pageName" /> 备注：<input v-model="remarks" />
           <button @click="addPage">add</button>
         </div>
-        <div class="lz_app_right_content" v-if="select !== -1">
+        <div class="lcu_app_right_content" v-if="select !== -1">
           <div
-            class="lz_app_right_content_page"
+            class="lcu_app_right_content_page"
             v-for="(item, index) in pageArray"
             :key="index"
           >
             <div
-              class="lz_app_right_content_cur"
+              class="lcu_app_right_content_cur"
               :index="index"
               @click="clickRouter($event, item)"
             ></div>
-            <div class="lz_app_right_content_page_body">
-              <div class="lz_app_right_content_page_header">
+            <div class="lcu_app_right_content_page_body">
+              <div class="lcu_app_right_content_page_header">
                 <span>{{ item.name }}</span>
                 <input
                   :value="item.name"
-                  class="lz_edit"
+                  class="lcu_edit"
                   @keyup.enter="keyupenElement($event, item)"
                   v-if="reNameElementIndex === index"
                 />
               </div>
-              <div class="lz_app_right_content_page_content">
+              <div class="lcu_app_right_content_page_content">
                 <div>
                   UUID：<span>{{ item.uuid }}</span>
                 </div>
@@ -126,7 +126,7 @@ export default class Application extends Vue {
     this.reNameElementIndex = "";
     this.getPageInfo(this.app_id);
   }
-  lz_router() {
+  lcu_router() {
     console.log(66, this.id);
     this.$router.push({ name: "ProjectMembers", query: { id: this.id } });
   }
@@ -249,7 +249,7 @@ export default class Application extends Vue {
     // document.addEventListener(
     //   "click",
     //   function(e: any) {
-    //     if (e.target.className !== "lz_edit") {
+    //     if (e.target.className !== "lcu_edit") {
     //       _self.reNameIndex = "";
     //       _self.reNameElementIndex = "";
     //     }
@@ -264,34 +264,34 @@ export default class Application extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.lz_application {
+.lcu_application {
   width: 100%;
   height: 100%;
   position: relative;
   top: 45px;
 }
-.lz_app_utils {
+.lcu_app_utils {
   text-align: left;
   padding: 5px;
 }
 
-.lz_app {
+.lcu_app {
   display: flex;
   height: 88%;
   padding: 5px;
   width: 100%;
 }
-.lz_app_left {
+.lcu_app_left {
   width: 20%;
   height: 100%;
   border: 1px solid #9f9494;
-  .lz_app_add {
+  .lcu_app_add {
     div {
       margin: 10px;
     }
   }
 }
-.lz_app_left_input {
+.lcu_app_left_input {
   text-align: left;
   input {
     width: 80%;
@@ -300,17 +300,17 @@ export default class Application extends Vue {
     margin-left: 5px;
   }
 }
-.lz_app_lication {
+.lcu_app_lication {
   height: 83%;
   width: 100%;
   overflow-y: scroll;
-  .lz_app_lication_btn {
+  .lcu_app_lication_btn {
     position: relative;
     padding: 5px;
     display: flex;
     min-height: 27px;
     width: 94%;
-    .lz_app_lication_name {
+    .lcu_app_lication_name {
       position: relative;
       width: 95%;
       text-overflow: ellipsis; /* ellipsis:显示省略符号来代表被修剪的文本  string:使用给定的字符串来代表被修剪的文本*/
@@ -331,31 +331,31 @@ export default class Application extends Vue {
       cursor: pointer;
     }
   }
-  .lz_app_lication_btn .lz_app_lication_name:hover {
+  .lcu_app_lication_btn .lcu_app_lication_name:hover {
     background-color: aqua;
   }
-  .lz_select {
+  .lcu_select {
     background-color: aqua;
   }
 }
-.lz_app_right {
+.lcu_app_right {
   width: 80%;
   height: 100%;
   border: 1px solid #9f9494;
-  .lz_app_right_header {
+  .lcu_app_right_header {
     text-align: left;
     padding: 10px;
     button {
       margin-left: 7px;
     }
   }
-  .lz_app_right_content {
+  .lcu_app_right_content {
     width: 98%;
     height: 88%;
     overflow-y: scroll;
     padding: 10px;
     position: relative;
-    .lz_app_right_content_page {
+    .lcu_app_right_content_page {
       position: relative;
       cursor: pointer;
       float: left;
@@ -363,17 +363,17 @@ export default class Application extends Vue {
       height: 130px;
       border: 1px solid #9f9494;
       margin: 10px;
-      .lz_app_right_content_cur {
+      .lcu_app_right_content_cur {
         position: absolute;
         width: 100%;
         height: 100%;
         z-index: 99;
       }
-      .lz_app_right_content_page_body {
+      .lcu_app_right_content_page_body {
         width: 100%;
         height: 100%;
       }
-      .lz_app_right_content_page_header {
+      .lcu_app_right_content_page_header {
         height: 20%;
         padding: 5px;
         text-overflow: ellipsis; /* ellipsis:显示省略符号来代表被修剪的文本  string:使用给定的字符串来代表被修剪的文本*/
@@ -387,7 +387,7 @@ export default class Application extends Vue {
           z-index: 999;
         }
       }
-      .lz_app_right_content_page_content {
+      .lcu_app_right_content_page_content {
         padding: 5px;
         height: 60%;
         font-size: 10px;
@@ -405,7 +405,7 @@ export default class Application extends Vue {
         }
       }
     }
-    .lz_app_right_content_page:hover {
+    .lcu_app_right_content_page:hover {
       background-color: rgb(230, 235, 193);
     }
   }

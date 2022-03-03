@@ -1,13 +1,13 @@
 <template>
-  <div class="lz_fx_model" />
+  <div class="lcu_fx_model" />
   <div
-    class="lz_fx"
+    class="lcu_fx"
     @mousedown="mousedown($event)"
     :style="domStyle"
     ref="lzfx"
   >
     <!-- <IdeComponent :value="cont" /> -->
-    <div class="lz_fx_title">
+    <div class="lcu_fx_title">
       请输入JS脚本：
       <div>
         <div @click="close">X</div>
@@ -15,31 +15,31 @@
         <div v-else @click="full(1)"><img src="./escfull.png" /></div>
       </div>
     </div>
-    <div class="lz_fx_fun_content" v-if="type === 'textarea'">
-      <div class="lz_fx_fun_code">(query) => {</div>
+    <div class="lcu_fx_fun_content" v-if="type === 'textarea'">
+      <div class="lcu_fx_fun_code">(query) => {</div>
       <!-- <textarea v-model="cont" ref="testInput" /> -->
       <IdeComponent :value="cont" ref="testInput" />
       <!-- <CodeIde :value="cont" ref="testInput" /> -->
-      <div class="lz_fx_fun_code">}</div>
+      <div class="lcu_fx_fun_code">}</div>
     </div>
-    <div class="lz_fx_fun_content" v-else>
-      <div class="lz_fx_fun_code">(function(){</div>
+    <div class="lcu_fx_fun_content" v-else>
+      <div class="lcu_fx_fun_code">(function(){</div>
       <!-- <textarea v-model="cont" ref="testInput" /> -->
       <IdeComponent :value="cont" ref="testInput" />
       <!-- <CodeIde :value="cont" ref="testInput" /> -->
-      <div class="lz_fx_fun_code">})()</div>
+      <div class="lcu_fx_fun_code">})()</div>
     </div>
-    <div class="lz_fx_content">
-      <div class="lz_fx_fun">
-        <div class="lz_fx_fun_type">
+    <div class="lcu_fx_content">
+      <div class="lcu_fx_fun">
+        <div class="lcu_fx_fun_type">
           <span>函数类型：</span>
-          <div class="lz_fx_var_content">
+          <div class="lcu_fx_var_content">
             <ul>
               <li
                 v-for="(item, index) in fnArray"
                 :key="index"
                 v-bind:class="[
-                  clickFntype === index ? 'lz_fx_var_content_activeClass' : ''
+                  clickFntype === index ? 'lcu_fx_var_content_activeClass' : ''
                 ]"
                 @click="fnColor(index, $event)"
               >
@@ -48,15 +48,15 @@
             </ul>
           </div>
         </div>
-        <div class="lz_fx_fun_name">
+        <div class="lcu_fx_fun_name">
           <span>函数名：</span>
-          <div class="lz_fx_var_content">
+          <div class="lcu_fx_var_content">
             <ul>
               <li
                 v-for="(item, index) in fnList"
                 :key="index"
                 v-bind:class="[
-                  clickFn === item ? 'lz_fx_var_content_activeClass' : ''
+                  clickFn === item ? 'lcu_fx_var_content_activeClass' : ''
                 ]"
                 @click="styleColorFn(item, $event)"
                 @dblclick="getPositionFn(item)"
@@ -67,15 +67,15 @@
           </div>
         </div>
       </div>
-      <div class="lz_fx_var">
+      <div class="lcu_fx_var">
         <span>对象：</span>
-        <div class="lz_fx_var_content">
+        <div class="lcu_fx_var_content">
           <ul>
             <li
               v-for="(item, index) in varList"
               :key="index"
               v-bind:class="[
-                clickVarList === index ? 'lz_fx_var_content_activeClass' : ''
+                clickVarList === index ? 'lcu_fx_var_content_activeClass' : ''
               ]"
               @click="styleColor(index, $event)"
               @dblclick="getPositionForTextAreaTest(index)"
@@ -87,15 +87,15 @@
           </ul>
         </div>
       </div>
-      <div class="lz_fx_explain">
+      <div class="lcu_fx_explain">
         <span>属性：</span>
-        <div class="lz_fx_var_content">
+        <div class="lcu_fx_var_content">
           <ul>
             <li
               v-for="(item, index) in attributeList"
               :key="index"
               v-bind:class="[
-                clickAttrList === item ? 'lz_fx_var_content_activeClass' : ''
+                clickAttrList === item ? 'lcu_fx_var_content_activeClass' : ''
               ]"
               @click="styleColorAttr(item, $event)"
               @dblclick="getPositionForTextAreaAttr(item)"
@@ -108,9 +108,9 @@
         </div>
       </div>
     </div>
-    <div class="lz_fx_footer">
-      <div class="lz_fx_footer_left">{{ describe }}</div>
-      <div class="lz_fx_footer_right">
+    <div class="lcu_fx_footer">
+      <div class="lcu_fx_footer_left">{{ describe }}</div>
+      <div class="lcu_fx_footer_right">
         <button @click="sure(index)">确定</button>
         <button @click="close">取消</button>
       </div>
@@ -198,7 +198,7 @@ export default class fn extends Vue {
 
   mousedown(e: any) {
     console.log(676, e.target.className);
-    if (e.button == 0 && e.target.className === "lz_fx_title") {
+    if (e.button == 0 && e.target.className === "lcu_fx_title") {
       const currentTarget = e.currentTarget;
       setTimeout(() => {
         console.log(90);
@@ -352,7 +352,7 @@ export default class fn extends Vue {
 </script>
 
 <style lang="scss">
-.lz_fx_model {
+.lcu_fx_model {
   background-color: gray;
   left: 0;
   opacity: 0.5;
@@ -363,7 +363,7 @@ export default class fn extends Vue {
   width: 100%;
   height: 100%;
 }
-.lz_fx_title {
+.lcu_fx_title {
   cursor: move;
   div {
     float: right;
@@ -384,7 +384,7 @@ export default class fn extends Vue {
     background-color: #9abfe0;
   }
 }
-.lz_fx {
+.lcu_fx {
   text-align: left;
   width: 500px;
   height: 500px;
@@ -394,7 +394,7 @@ export default class fn extends Vue {
   top: 10%;
   padding: 5px;
   background: white;
-  .lz_fx_fun_content {
+  .lcu_fx_fun_content {
     height: 38%;
     width: 100%;
     textarea {
@@ -404,31 +404,31 @@ export default class fn extends Vue {
   }
 }
 
-.lz_fx_content {
+.lcu_fx_content {
   display: flex;
   height: 50%;
   width: 100%;
-  .lz_fx_fun {
+  .lcu_fx_fun {
     display: flex;
     width: 50%;
     height: 100%;
-    .lz_fx_fun_type,
-    .lz_fx_fun_name {
+    .lcu_fx_fun_type,
+    .lcu_fx_fun_name {
       width: 50%;
       height: 100%;
     }
   }
-  .lz_fx_var {
+  .lcu_fx_var {
     width: 25%;
     height: 100%;
   }
-  .lz_fx_var_content {
+  .lcu_fx_var_content {
     width: 93%;
     height: 90%;
     border-style: ridge;
     overflow: scroll;
     display: grid;
-    .lz_fx_var_content_activeClass {
+    .lcu_fx_var_content_activeClass {
       background-color: #6363d6;
       color: white;
     }
@@ -446,16 +446,16 @@ export default class fn extends Vue {
       background-color: #9abfe0;
     }
   }
-  .lz_fx_explain {
+  .lcu_fx_explain {
     width: 25%;
     height: 100%;
   }
 }
-.lz_fx_footer {
+.lcu_fx_footer {
   height: 8%;
   width: 100%;
   display: inline-flex;
-  .lz_fx_footer_left {
+  .lcu_fx_footer_left {
     text-align: left;
     width: 80%;
     height: 100%;
@@ -463,7 +463,7 @@ export default class fn extends Vue {
     font-weight: 600;
     overflow: auto;
   }
-  .lz_fx_footer_right {
+  .lcu_fx_footer_right {
     width: 20%;
     text-align: right;
 
@@ -473,7 +473,7 @@ export default class fn extends Vue {
     }
   }
 }
-.lz_fx_fun_code {
+.lcu_fx_fun_code {
   padding: 5px;
 }
 </style>

@@ -7,15 +7,15 @@
     :commonStyle="commonStyle"
   />
   <!-- <Fn /> -->
-  <div class="lz_body">
-    <div class="lz_body_left">
+  <div class="lcu_body">
+    <div class="lcu_body_left">
       <ComponentLibrary ref="componentlibrary" />
     </div>
-    <div class="lz_body_center" :style="bodyHeight" ref="lz_body_center">
+    <div class="lcu_body_center" :style="bodyHeight" ref="lcu_body_center">
       <RulerTool ref="rulertool" />
-      <div class="lz_ruler_v_canves" ref="rightContent" @scroll="scrool">
+      <div class="lcu_ruler_v_canves" ref="rightContent" @scroll="scrool">
         <div
-          id="lz_canves"
+          id="lcu_canves"
           ref="canves"
           :style="domStyle2"
           @click="handleClickCanvas"
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-    <div class="lz_body_right">
+    <div class="lcu_body_right">
       <IDE
         :apiValue="apies"
         :pattern="pattern"
@@ -109,6 +109,7 @@ import DesignStore from "@/store/modules/design";
 import indexedDB from "@/store/indexedDB";
 import LoginStore from "@/store/modules/login";
 import fetch from "./pc/fetch";
+import {serverModuleApi} from "@/service/main";
 import { selectEvents } from "element-plus/lib/el-select/src/token";
 import Fn from "./ide/fn/code-ideJson.vue";
 
@@ -192,7 +193,7 @@ export default class Home extends Vue {
     let x: any = this.$refs.homeheader;
     let r: any = eval(JSON.stringify(x.revoke));
     document.onmousemove = function(ev) {
-      let b: any = document.getElementById("lz_canves");
+      let b: any = document.getElementById("lcu_canves");
       const oEvent = ev || event;
       l = oEvent.clientX - disX;
       console.log(4848, l);
@@ -233,7 +234,7 @@ export default class Home extends Vue {
     let t = 0;
     let self = this;
     document.onmousemove = function(ev) {
-      let b: any = document.getElementById("lz_canves");
+      let b: any = document.getElementById("lcu_canves");
       const oEvent = ev || event;
       t = oEvent.clientY - disY;
       console.log(4848, t);
@@ -554,7 +555,7 @@ export default class Home extends Vue {
       document.getElementsByTagName("head")[0].removeChild(val);
     });
     let c = "";
-    let url = "http://192.168.18.41:8081/" + name + "/dist/fonts";
+    let url = `${serverModuleApi}/` + name + "/dist/fonts";
     let p = css.slice(0, css.length - 1);
     let l = p
       .replace(/,/g, "," + "#" + uuid + " ")
@@ -653,7 +654,7 @@ export default class Home extends Vue {
     };
     (window as any).api = this.api;
     (window as any).paramObj = this.paramObj;
-    let a: any = document.getElementById("lz_header");
+    let a: any = document.getElementById("lcu_header");
     let b: any = document.body;
     this.bodyHeight = { height: b.clientHeight - a.clientHeight + "px" };
 
@@ -670,26 +671,26 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss">
-#lz_canves {
+#lcu_canves {
   border: 1px solid black;
   position: relative;
   z-index: 0;
 }
 
-.lz_body {
+.lcu_body {
   height: 75%;
   width: 100%;
   display: flex;
 }
-.lz_body_left {
+.lcu_body_left {
   width: 20%;
   position: relative;
 }
-.lz_body_center {
+.lcu_body_center {
   width: 60%;
   overflow: hidden;
 }
-.lz_body_right {
+.lcu_body_right {
   width: 20%;
 }
 .lz-ruler-ref-line-v {

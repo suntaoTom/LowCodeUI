@@ -1,11 +1,11 @@
 <template>
-  <div class="lz_view" @click="focusPrice($event)">
-    <div class="lz_view_flex" v-for="(item, index) in data" :key="index">
-      <div class="lz_view_left">
+  <div class="lcu_view" @click="focusPrice($event)">
+    <div class="lcu_view_flex" v-for="(item, index) in data" :key="index">
+      <div class="lcu_view_left">
         <label>{{ item.name }}：</label>
       </div>
-      <div class="lz_view_right">
-        <div class="lz_view_right_ide" v-if="item.type === 'input'">
+      <div class="lcu_view_right">
+        <div class="lcu_view_right_ide" v-if="item.type === 'input'">
           <!-- <input @blur="blur($event, index)" v-model="item.defaultvalue" /> -->
           <textarea
             @blur="blur($event, index)"
@@ -13,7 +13,7 @@
           ></textarea>
           <button @click="fx(item, index)">F(x)</button>
         </div>
-        <div class="lz_view_right_ide" v-else-if="item.type === 'select'">
+        <div class="lcu_view_right_ide" v-else-if="item.type === 'select'">
           <select @change="change($event, index)" v-model="item.defaultvalue">
             <option value=""></option>
             <option
@@ -24,13 +24,13 @@
             >
           </select>
         </div>
-        <div class="lz_view_right_ide" v-else-if="item.type === 'bollean'">
+        <div class="lcu_view_right_ide" v-else-if="item.type === 'bollean'">
           <select @change="change($event, index)" v-model="item.defaultvalue">
             <option value="true">true</option>
             <option value="false" checked>false</option>
           </select>
         </div>
-        <div class="lz_view_right_ide" v-else-if="item.type === 'textarea'">
+        <div class="lcu_view_right_ide" v-else-if="item.type === 'textarea'">
           <textarea
             @blur="blur($event, index)"
             v-model="item.defaultvalue"
@@ -206,27 +206,27 @@ export default class ViewTemplate extends Vue {
 </script>
 
 <style lang="scss">
-.lz_view {
+.lcu_view {
   width: 100%;
   height: 90%;
   overflow: auto;
 }
-.lz_view_flex {
+.lcu_view_flex {
   width: 100%;
   display: flex;
   margin-top: 10px;
 }
-.lz_view_left {
+.lcu_view_left {
   width: 50%;
   text-align: right;
   font-size: 14px;
   font-weight: 700;
 }
-.lz_view_right {
+.lcu_view_right {
   width: 50%;
   text-align: left;
 
-  .lz_view_right_ide {
+  .lcu_view_right_ide {
     position: relative;
     width: 100%;
     display: inline-flex;

@@ -13,11 +13,11 @@
       @mousedown="onPoint($event, item, index)"
       :style="getStyle(item)"
     ></div>
-    <span v-if="this.active === true" class="lz_dom_delete" @click="domDelete"
+    <span v-if="this.active === true" class="lcu_dom_delete" @click="domDelete"
       >删除</span
     >
-    <div class="lz_curs" :index="position"></div>
-    <div :id="idname" class="lz_slot"></div>
+    <div class="lcu_curs" :index="position"></div>
+    <div :id="idname" class="lcu_slot"></div>
   </div>
 </template>
 
@@ -129,7 +129,7 @@ export default class editShape extends Vue {
   }
   mounted() {
     //这里不能用虚拟dom（因为类型是Proxy），所以要用document拿取原生Dom
-    this.canvesDom = document.getElementById("lz_canves");
+    this.canvesDom = document.getElementById("lcu_canves");
     setTimeout(() => {
       this.$emit("assemblyFnOne");
     }, 0);
@@ -157,11 +157,11 @@ export default class editShape extends Vue {
     outline: 1px dashed #25a589;
   }
 }
-.lz_slot {
+.lcu_slot {
   width: 100%;
   height: 100%;
 }
-.lz_dom_delete {
+.lcu_dom_delete {
   color: blue;
   font-size: 0.1rem;
   position: absolute;
@@ -169,7 +169,7 @@ export default class editShape extends Vue {
   cursor: pointer;
   z-index: 1;
 }
-.lz_curs {
+.lcu_curs {
   width: 100%;
   height: 100%;
   position: absolute;

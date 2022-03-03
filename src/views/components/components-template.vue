@@ -1,6 +1,6 @@
 <template>
   <div class="components-edit-shape" :style="defaultStyle">
-    <div :id="idname" class="lz_slot"></div>
+    <div :id="idname" class="lcu_slot"></div>
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default class editShape extends Vue {
     outline: 1px dashed #25a589;
   }
 }
-.lz_slot {
+.lcu_slot {
   width: 100%;
   height: 100%;
 }

@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === "production") {
   // 不要动它
   title = "http://192.168.18.41:8007"; // 不要动它
 } else {
-  title = "http://192.168.20.225:8007"; // 可直接替换成相应请求地址进行调试
+  title = "http://192.168.1.190:8007"; // 可直接替换成相应请求地址进行调试
 }
+export let serverModuleApi="http://localhost:8081"  //服务组件地址
 export default title;

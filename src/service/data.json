@@ -10,8 +10,8 @@
   "elements": [
     {
       "uuid": "lz6d53",
-      "componentName": "@linezone/element-button_0.1.5",
-      "version": "npm:@linezone/element-button@^0.1.5",
+      "componentName": "@lowcodeui/element-button_0.1.5",
+      "version": "npm:@lowcodeui/element-button@^0.1.5",
       "commonStyle": {
         "cursor": "move",
         "width": "108px",
@@ -29,8 +29,8 @@
     },
     {
       "uuid": "lz8c33",
-      "componentName": "@linezone/element-table_0.1.0",
-      "version": "npm:@linezone/element-table@^0.1.0",
+      "componentName": "@lowcodeui/element-table_0.1.0",
+      "version": "npm:@lowcodeui/element-table@^0.1.0",
       "commonStyle": {
         "cursor": "move",
         "width": "698px",
@@ -48,8 +48,8 @@
     },
     {
       "uuid": "lz7323",
-      "componentName": "@linezone/element-input_0.1.0",
-      "version": "npm:@linezone/element-input@^0.1.0",
+      "componentName": "@lowcodeui/element-input_0.1.0",
+      "version": "npm:@lowcodeui/element-input@^0.1.0",
       "commonStyle": {
         "cursor": "move",
         "width": "196px",
@@ -67,8 +67,8 @@
     },
     {
       "uuid": "lz7517",
-      "componentName": "@linezone/element-select_0.1.1",
-      "version": "npm:@linezone/element-select@^0.1.1",
+      "componentName": "@lowcodeui/element-select_0.1.1",
+      "version": "npm:@lowcodeui/element-select@^0.1.1",
       "commonStyle": {
         "cursor": "move",
         "width": "201px",
@@ -86,8 +86,8 @@
     },
     {
       "uuid": "lz8c57",
-      "componentName": "@linezone/element-echarts_0.1.5",
-      "version": "npm:@linezone/element-echarts@^0.1.5",
+      "componentName": "@lowcodeui/element-echarts_0.1.5",
+      "version": "npm:@lowcodeui/element-echarts@^0.1.5",
       "commonStyle": {
         "cursor": "move",
         "width": "425px",
@@ -105,8 +105,8 @@
     },
     {
       "uuid": "lz937e",
-      "componentName": "@linezone/element-echarts_0.1.5",
-      "version": "npm:@linezone/element-echarts@^0.1.5",
+      "componentName": "@lowcodeui/element-echarts_0.1.5",
+      "version": "npm:@lowcodeui/element-echarts@^0.1.5",
       "commonStyle": {
         "cursor": "move",
         "width": "398px",

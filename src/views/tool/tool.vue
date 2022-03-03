@@ -1,12 +1,12 @@
 <template>
-  <ul class="lz_rightMenu" ref="lz_rightMenu" style="width:70px;">
-    <li class="lz_rightMenu_li">复制</li>
+  <ul class="lcu_rightMenu" ref="lcu_rightMenu" style="width:70px;">
+    <li class="lcu_rightMenu_li">复制</li>
   </ul>
-  <ul class="lz_rightMenu" ref="lz_rightElement" style="width:70px;">
-    <li class="lz_rightMenu_collect">收藏</li>
+  <ul class="lcu_rightMenu" ref="lcu_rightElement" style="width:70px;">
+    <li class="lcu_rightMenu_collect">收藏</li>
   </ul>
-  <ul class="lz_rightMenu" ref="lz_rightPerson" style="width:70px;">
-    <li class="lz_rightMenu_del">删除</li>
+  <ul class="lcu_rightMenu" ref="lcu_rightPerson" style="width:70px;">
+    <li class="lcu_rightMenu_del">删除</li>
   </ul>
 </template>
 
@@ -31,21 +31,21 @@ export default class tool extends Vue {
       _self.type = parseInt(k.addElement);
       let a: any = e.target;
       if (
-        a.className === "lz_curs" ||
-        a.className === "lz_element_content_ele_curs"
+        a.className === "lcu_curs" ||
+        a.className === "lcu_element_content_ele_curs"
       ) {
         let rm: any = null;
-        if (a.className === "lz_curs") {
-          rm = _self.$refs.lz_rightMenu;
+        if (a.className === "lcu_curs") {
+          rm = _self.$refs.lcu_rightMenu;
           _self.position = a.getAttribute("index");
         } else if (
-          a.className === "lz_element_content_ele_curs" &&
+          a.className === "lcu_element_content_ele_curs" &&
           _self.type === 3
         ) {
-          rm = _self.$refs.lz_rightPerson;
+          rm = _self.$refs.lcu_rightPerson;
           _self.position = a.getAttribute("data");
         } else {
-          rm = _self.$refs.lz_rightElement;
+          rm = _self.$refs.lcu_rightElement;
           _self.position = a.getAttribute("data");
         }
 
@@ -75,13 +75,13 @@ export default class tool extends Vue {
         rm.style.display = "block";
         document.onmousedown = async function(e) {
           let a: any = e.target;
-          if (a.className === "lz_rightMenu_li") {
+          if (a.className === "lcu_rightMenu_li") {
             let c: any = e.target;
             let d: any = _self.$parent;
             let b = d.dataEle.elements[_self.position];
             console.log(2323, JSON.stringify(b));
             _self.copydataEle(JSON.stringify(b));
-          } else if (a.className === "lz_rightMenu_collect") {
+          } else if (a.className === "lcu_rightMenu_collect") {
             console.log(233, Object.keys(JSON.parse(_self.position))[0]);
             let key = Object.keys(JSON.parse(_self.position))[0];
             //let c: any = _self.$route.query;
@@ -105,7 +105,7 @@ export default class tool extends Vue {
             } else {
               alert("此组件已收藏");
             }
-          } else if (a.className === "lz_rightMenu_del") {
+          } else if (a.className === "lcu_rightMenu_del") {
             let l = Object.keys(JSON.parse(_self.position))[0];
             let g = JSON.parse(JSON.stringify(DesignStore.assemblyData));
             console.log(2323, g, l);
@@ -148,7 +148,7 @@ export default class tool extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.lz_rightMenu {
+.lcu_rightMenu {
   list-style: none;
   background: white;
   border: solid 1px darkgrey;
@@ -163,10 +163,10 @@ export default class tool extends Vue {
   cursor: pointer;
   font-size: 12px;
 }
-.lz_rightMenu li {
+.lcu_rightMenu li {
   border-bottom: solid 1px darkgrey;
 }
-.lz_rightMenu li:hover {
+.lcu_rightMenu li:hover {
   background-color: #d4d6d8;
 }
 </style>

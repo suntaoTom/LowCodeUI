@@ -1,6 +1,6 @@
 <template>
   <div
-    class="lz_packageInfo"
+    class="lcu_packageInfo"
     v-if="
       getActiveeElementUUID !== null &&
         packageInfo.name !== undefined &&
@@ -10,7 +10,7 @@
     <p>UUID：{{ getActiveeElementUUID }}</p>
     <p>
       版本：{{ packageInfo.version
-      }}<a :href="getUrl(packageInfo)" target="blank" class="lz_a">了解详情</a>
+      }}<a :href="getUrl(packageInfo)" target="blank" class="lcu_a">了解详情</a>
     </p>
     <p>组件名：{{ packageInfo.name }}</p>
     <p>
@@ -20,10 +20,10 @@
           packageInfo.name +
           "_" +
           packageInfo.version
-      }}<span @click="copy" class="lz_copy">复制</span>
+      }}<span @click="copy" class="lcu_copy">复制</span>
     </p>
   </div>
-  <div class="lz_packageInfo" v-else>
+  <div class="lcu_packageInfo" v-else>
     <p>UUID：</p>
     <p>版本：</p>
     <p>组件名：</p>
@@ -79,13 +79,13 @@ export default class PackageInfo extends Vue {
 </script>
 
 <style lang="scss">
-.lz_copy,
-.lz_a {
+.lcu_copy,
+.lcu_a {
   color: blue;
   cursor: pointer;
   font-size: 0.1rem;
 }
-.lz_packageInfo {
+.lcu_packageInfo {
   text-align: left;
 }
 </style>

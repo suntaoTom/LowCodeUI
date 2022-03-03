@@ -30,6 +30,8 @@ import editShape from "../components/components-template.vue";
 import DesignStore from "@/store/modules/design";
 import indexedDB from "@/store/indexedDB";
 import fetch from "./fetch";
+
+import {serverModuleApi} from "@/service/main";
 @Options({
   components: {
     editShape
@@ -92,7 +94,7 @@ export default class PC extends Vue {
   // 初始化每个组件的css样式
   styleHtml(css: any, uuid: any, name: any) {
     let c = "";
-    let url = "http://192.168.18.41:8081/" + name + "/dist/fonts";
+    let url = `${serverModuleApi}/` + name + "/dist/fonts";
     for (let key in css) {
       let k = css[key].slice(0, css[key].length - 1);
       let p = k
@@ -121,7 +123,7 @@ export default class PC extends Vue {
   // 动态添加每个组件的css样式
   styleHtmlCss(css: any, uuid: any, name: any) {
     let c = "";
-    let url = "http://192.168.18.41:8081/" + name + "/dist/fonts";
+    let url = `${serverModuleApi}/` + name + "/dist/fonts";
     let k = css.slice(0, css.length - 1);
     let p = k
       .replace("#app", "#" + uuid)

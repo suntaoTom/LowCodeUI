@@ -1,6 +1,6 @@
 <template>
   <div @mousedown="verticalDragRuler($event)">
-    <div class="lz_ruler_horn"></div>
+    <div class="lcu_ruler_horn"></div>
     <div class="lz-ruler-v" ref="horizontalRuler" style="position: relative;">
       <span
         v-for="(item, index) in Scale"
@@ -54,7 +54,7 @@ export default class rulers extends Vue {
     const a: any = this.$parent;
     let t = 0;
     let id =
-      "lz_v" + (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+      "lcu_v" + (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     let p = a.$refs.rightContent.scrollTop;
     let x: any = a.$refs.homeheader;
     let r: any = eval(JSON.stringify(x.revoke));
@@ -63,7 +63,7 @@ export default class rulers extends Vue {
     const disY = e.clientY - oDiv.offsetTop;
     console.log(1313, e.clientY);
     document.onmousemove = function(ev) {
-      let b: any = document.getElementById("lz_canves");
+      let b: any = document.getElementById("lcu_canves");
       const oEvent = ev || event;
 
       if (oEvent.clientY > e.clientY + 18) {
@@ -102,7 +102,7 @@ export default class rulers extends Vue {
     const a: any = this.$parent;
     let l = 0;
     let id =
-      "lz_h" + (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+      "lcu_h" + (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     let p = a.$refs.rightContent.scrollLeft;
     let x: any = a.$refs.homeheader;
     let r: any = eval(JSON.stringify(x.revoke));
@@ -113,7 +113,7 @@ export default class rulers extends Vue {
     const disX = e.clientX - oDiv.offsetLeft;
     console.log(1313, e.clientX);
     document.onmousemove = function(ev) {
-      let b: any = document.getElementById("lz_canves");
+      let b: any = document.getElementById("lcu_canves");
       const oEvent = ev || event;
       if (oEvent.clientX > e.clientX + 18) {
         l = oEvent.clientX - disX - 18;
@@ -188,7 +188,7 @@ export default class rulers extends Vue {
   color: #333;
   cursor: default;
 }
-.lz_ruler_v_canves {
+.lcu_ruler_v_canves {
   width: 98%;
   height: 97%;
   top: -20001px;
@@ -196,7 +196,7 @@ export default class rulers extends Vue {
   position: relative;
   overflow: scroll;
 }
-.lz_ruler_horn {
+.lcu_ruler_horn {
   z-index: 1;
   width: 18px;
   height: 18px;

@@ -1,7 +1,7 @@
 <template>
   <!-- v-if="router !== '/login'" -->
   <div
-    class="lz_app_header"
+    class="lcu_app_header"
     v-if="
       router !== '/login' &&
         router !== '/' &&
@@ -10,10 +10,10 @@
         router !== '/develop'
     "
   >
-    <div class="lz_app_header_left">
-      <h2>ServerUI</h2>
+    <div class="lcu_app_header_left">
+      <h2>LowCodeUI</h2>
     </div>
-    <div class="lz_app_header_right">
+    <div class="lcu_app_header_right">
       <span
         ><a target="_blank" href="http://192.168.200.16:7002/">帮助</a></span
       >
@@ -22,7 +22,7 @@
       <span><router-link to="/" exact>退出</router-link></span>
     </div>
   </div>
-  <router-view :class="router !== '/about' ? ' lz_content' : ''" />
+  <router-view :class="router !== '/about' ? ' lcu_content' : ''" />
 </template>
 
 <script lang="ts">
@@ -97,14 +97,14 @@ textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-.lz_app_header {
+.lcu_app_header {
   height: 35px;
   width: 100%;
   position: fixed;
   background-color: #d5dada;
   display: flex;
 }
-.lz_app_header_left {
+.lcu_app_header_left {
   padding-left: 25px;
   width: 50%;
   text-align: left;
@@ -113,7 +113,7 @@ textarea {
     position: relative;
   }
 }
-.lz_app_header_right {
+.lcu_app_header_right {
   width: 50%;
   right: 30px;
   position: relative;
@@ -125,7 +125,7 @@ textarea {
     margin-left: 8px;
   }
 }
-.lz_content {
+.lcu_content {
   top: 70px;
   position: relative;
 }

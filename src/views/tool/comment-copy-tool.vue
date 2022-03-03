@@ -1,11 +1,11 @@
 <template>
-  <ul class="lz_rightMenu" ref="lz_rightMenu" style="width:70px;">
-    <li class="lz_rightMenu_li">删除</li>
-    <li class="lz_rightMenu_rename">重命名</li>
+  <ul class="lcu_rightMenu" ref="lcu_rightMenu" style="width:70px;">
+    <li class="lcu_rightMenu_li">删除</li>
+    <li class="lcu_rightMenu_rename">重命名</li>
   </ul>
-  <ul class="lz_rightMenu" ref="lz_rightElement" style="width:70px;">
-    <li class="lz_rightMenu_del_Element">删除</li>
-    <li class="lz_rightMenu_rename_Element">重命名</li>
+  <ul class="lcu_rightMenu" ref="lcu_rightElement" style="width:70px;">
+    <li class="lcu_rightMenu_del_Element">删除</li>
+    <li class="lcu_rightMenu_rename_Element">重命名</li>
   </ul>
 </template>
 
@@ -25,16 +25,16 @@ export default class tool extends Vue {
       let a: any = e.target;
       _self.position = a.getAttribute("index");
       if (
-        a.className === "lz_app_lication_name" ||
-        a.className === "lz_app_lication_name lz_select" ||
-        a.className === "lz_app_right_content_cur"
+        a.className === "lcu_app_lication_name" ||
+        a.className === "lcu_app_lication_name lcu_select" ||
+        a.className === "lcu_app_right_content_cur"
       ) {
         let rm: any = null;
         _self.position = a.getAttribute("index");
-        if (a.className === "lz_app_right_content_cur") {
-          rm = _self.$refs.lz_rightElement;
+        if (a.className === "lcu_app_right_content_cur") {
+          rm = _self.$refs.lcu_rightElement;
         } else {
-          rm = _self.$refs.lz_rightMenu;
+          rm = _self.$refs.lcu_rightMenu;
         }
         //显示我们自己定义的右键菜单
         //1.找到菜单
@@ -62,26 +62,26 @@ export default class tool extends Vue {
         rm.style.display = "block";
         document.onmousedown = function(e) {
           let a: any = e.target;
-          if (a.className === "lz_rightMenu_li") {
+          if (a.className === "lcu_rightMenu_li") {
             let c: any = e.target;
             let d: any = _self.$parent;
             let b = d.appInfo[_self.position];
             console.log(2323, JSON.stringify(b));
             d.appDelete(b);
-          } else if (a.className === "lz_rightMenu_rename") {
+          } else if (a.className === "lcu_rightMenu_rename") {
             let d: any = _self.$parent;
             d.reNameIndex = parseInt(_self.position);
-          } else if (a.className === "lz_rightMenu_del_Element") {
+          } else if (a.className === "lcu_rightMenu_del_Element") {
             let c: any = e.target;
             let d: any = _self.$parent;
             let b = d.pageArray[_self.position];
             console.log(2323, JSON.stringify(b));
             d.pageDelete(b);
-          } else if (a.className === "lz_rightMenu_rename_Element") {
+          } else if (a.className === "lcu_rightMenu_rename_Element") {
             let d: any = _self.$parent;
             d.reNameElementIndex = parseInt(_self.position);
           } else {
-            if (a.className !== "lz_edit") {
+            if (a.className !== "lcu_edit") {
               let d: any = _self.$parent;
               // if (d.reNameIndex !== "" || d.reNameElementIndex !== "") {
 
@@ -118,7 +118,7 @@ export default class tool extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.lz_rightMenu {
+.lcu_rightMenu {
   list-style: none;
   background: white;
   border: solid 1px darkgrey;
@@ -133,10 +133,10 @@ export default class tool extends Vue {
   cursor: pointer;
   font-size: 12px;
 }
-.lz_rightMenu li {
+.lcu_rightMenu li {
   border-bottom: solid 1px darkgrey;
 }
-.lz_rightMenu li:hover {
+.lcu_rightMenu li:hover {
   background-color: #d4d6d8;
 }
 </style>

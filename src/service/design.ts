@@ -1,5 +1,5 @@
 import { get, post } from "@/utils/fetch";
-import title from "./main";
+import title,{serverModuleApi} from "@/service/main";
 import datajson from "./data.json";
 
 export function fetch(data: any) {
@@ -10,16 +10,16 @@ export function getAssemblyFetch(data: any) {
   if (parseInt(data.element_type) === 3) {
     return getPersonRule(data);
   } else {
-    return get(`http://192.168.18.41:8081/getList`, data);
+    return get(`${serverModuleApi}/getList`, data);
   }
 }
 
 export function getComponentInfoFetch(data: any) {
-  return post(`http://192.168.18.41:8081/updateAnswer`, data);
+  return post(`${serverModuleApi}/updateAnswer`, data);
 }
 
 export function addElementName(data: any) {
-  return post(`http://192.168.18.41:8081/addElementName`, data);
+  return post(`${serverModuleApi}/addElementName`, data);
 }
 
 export function setPageRule(data: any) {

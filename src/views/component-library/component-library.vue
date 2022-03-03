@@ -1,18 +1,18 @@
 <template>
-  <div class="lz_element" ref="lz_element">
-    <div class="lz_element_title">
-      <div class="lz_element_title_left"></div>
-      <div class="lz_element_title_center"><span>元件库</span></div>
-      <div class="lz_element_title_right">
+  <div class="lcu_element" ref="lcu_element">
+    <div class="lcu_element_title">
+      <div class="lcu_element_title_left"></div>
+      <div class="lcu_element_title_center"><span>元件库</span></div>
+      <div class="lcu_element_title_right">
         <span @click="add" v-if="addElement === 0">添加</span>
         <span @click="search">搜索</span>
       </div>
     </div>
-    <div class="lz_element_title_add" v-if="addBlea && addElement === 0">
-      <input placeholder="@linezone/xx@1.0.0" v-model="addName" />
+    <div class="lcu_element_title_add" v-if="addBlea && addElement === 0">
+      <input placeholder="@lowcodeui/xx@1.0.0" v-model="addName" />
       <button @click="addClick" :disabled="okBllea">ok</button>
     </div>
-    <div class="lz_element_select">
+    <div class="lcu_element_select">
       <select @change="lzElement($event)">
         <option value="0">公共</option>
         <option value="1">集团</option>
@@ -20,28 +20,28 @@
         <option value="3">个人</option>
       </select>
     </div>
-    <div class="lz_element_title_search" v-if="searchBlea">
+    <div class="lcu_element_title_search" v-if="searchBlea">
       <input placeholder="请输入要搜索的元件名" v-model="searchName" />
       <button @click="searchClick">ok</button>
     </div>
-    <div class="lz_element_content">
+    <div class="lcu_element_content">
       <div
-        class="lz_element_content_ele"
+        class="lcu_element_content_ele"
         v-for="(item, index) in assembly"
         @mousedown="doMousedown($event, index, item)"
         :key="index"
       >
         <div
-          class="lz_element_content_ele_curs"
+          class="lcu_element_content_ele_curs"
           :data="getJson(index, item)"
         ></div>
-        <div class="lz_element_content_ele_info">
+        <div class="lcu_element_content_ele_info">
           <p><img :src="imgUrl(index)" /></p>
           <p>{{ index }}</p>
         </div>
       </div>
     </div>
-    <div class="lz_element_content_move" ref="lz_element_content_move"></div>
+    <div class="lcu_element_content_move" ref="lcu_element_content_move"></div>
   </div>
 </template>
 
@@ -51,6 +51,7 @@ import DesignStore from "@/store/modules/design";
 import LoginStore from "@/store/modules/login";
 import moveDirective from "./move-directive";
 import { get, post } from "@/utils/fetch";
+import {serverModuleApi} from "@/service/main";
 @Options({
   components: {},
   //指令
@@ -72,7 +73,7 @@ export default class Home extends Vue {
     let _self = this;
     //获取画布宽，高，,x,y
     let parent: any = this.$parent;
-    let b = parent.$refs.lz_body_center;
+    let b = parent.$refs.lcu_body_center;
     let top = b.offsetTop;
     let left = b.offsetLeft;
     let width = b.clientWidth;
@@ -82,7 +83,7 @@ export default class Home extends Vue {
     let scrollLeft = canves.scrollLeft;
     let scrollTop = canves.scrollTop;
     //获取虚拟框
-    let el: any = this.$refs.lz_element_content_move;
+    let el: any = this.$refs.lcu_element_content_move;
     let x = 0;
     let y = 0;
     let l = 0;
@@ -156,7 +157,7 @@ export default class Home extends Vue {
     }
   }
   imgUrl(url: any) {
-    return "http://192.168.18.41:8081/" + url + "/public/logo.png";
+    return `${serverModuleApi}/` + url + "/public/logo.png";
   }
 
   created() {
@@ -175,12 +176,13 @@ export default class Home extends Vue {
     let e: any = this.addName.lastIndexOf("/");
     let d = this.addName.substr(0, e);
     console.log(232323, b);
-    if (d === "@linezone" && a.test(c)) {
+    debugger
+    if (d === "@lowcodeui" && a.test(c)) {
       let f = this.addName.slice(0, b);
       let g = this.addName.slice(b + 1, this.addName.length);
       console.log(33, DesignStore.assemblyData);
       let h = "npm:" + f + "@^" + g;
-      if (DesignStore.assemblyData[f + "_" + g] === h) {
+      if (DesignStore.assemblyData!==null&&DesignStore.assemblyData[f + "_" + g] === h) {
         alert("此元件已存在");
       } else {
         this.okBllea = true;
@@ -205,8 +207,8 @@ export default class Home extends Vue {
       }
       console.log(44, d, c, a.test(c));
     } else {
-      console.error("请输入正确内容，例（名称@版本）：@linezone/xx@1.0.0");
-      alert("请输入正确内容，例（名称@版本）：@linezone/xx@1.0.0");
+      console.error("请输入正确内容，例（名称@版本）：@lowcodeui/xx@1.0.0");
+      alert("请输入正确内容，例（名称@版本）：@lowcodeui/xx@1.0.0");
     }
   }
   add() {
@@ -253,7 +255,7 @@ export default class Home extends Vue {
       document.getElementsByTagName("head")[0].removeChild(val);
     });
     let c = "";
-    let url = "http://192.168.18.41:8081/" + name + "/dist/fonts";
+    let url = `${serverModuleApi}/` + name + "/dist/fonts";
     for (let key in css) {
       let k = css[key].slice(0, css[key].length - 1);
       let p = k
@@ -447,23 +449,23 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss">
-.lz_element {
+.lcu_element {
   width: 100%;
   height: 100%;
 }
-.lz_element_title {
+.lcu_element_title {
   height: 30px;
   width: 100%;
   display: flex;
   text-align: center;
-  .lz_element_title_left {
+  .lcu_element_title_left {
     width: 30%;
   }
-  .lz_element_title_center {
+  .lcu_element_title_center {
     width: 40%;
     text-align: center;
   }
-  .lz_element_title_right {
+  .lcu_element_title_right {
     width: 30%;
     font-size: 10px;
     margin: 5px;
@@ -474,7 +476,7 @@ export default class Home extends Vue {
     }
   }
 }
-.lz_element_select {
+.lcu_element_select {
   height: 30px;
   width: 100%;
   text-align: left;
@@ -482,25 +484,25 @@ export default class Home extends Vue {
     width: 95%;
   }
 }
-.lz_element_content {
+.lcu_element_content {
   overflow: auto;
   height: 80%;
   width: 100%;
   font-size: 1px;
 
-  .lz_element_content_ele {
+  .lcu_element_content_ele {
     height: 100px;
     width: 100px;
     float: left;
     cursor: pointer;
     position: relative;
-    .lz_element_content_ele_curs {
+    .lcu_element_content_ele_curs {
       width: 100%;
       height: 100%;
       position: absolute;
       z-index: 1;
     }
-    .lz_element_content_ele_info {
+    .lcu_element_content_ele_info {
       width: 80%;
       height: 80%;
       margin-left: 10px;
@@ -515,14 +517,14 @@ export default class Home extends Vue {
       }
     }
   }
-  .lz_element_content_ele:hover {
+  .lcu_element_content_ele:hover {
     background-color: #b6d6f7;
     border-color: #66a9ed;
   }
 }
 
-.lz_element_title_add,
-.lz_element_title_search {
+.lcu_element_title_add,
+.lcu_element_title_search {
   position: relative;
   top: 1px;
   text-align: left;
@@ -536,7 +538,7 @@ export default class Home extends Vue {
     cursor: pointer;
   }
 }
-.lz_element_content_move {
+.lcu_element_content_move {
   position: fixed;
   top: 0px;
   border-style: dotted;

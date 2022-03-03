@@ -1,10 +1,10 @@
 <template>
-  <div class="lz_header" id="lz_header">
+  <div class="lcu_header" id="lcu_header">
     <!-- {{ dataEle }}
     {{ revoke.length }} -->
-    <div class="lz_header_tool">
-      <div class="lz_button_item">
-        <div class="lz_button_item_left">
+    <div class="lcu_header_tool">
+      <div class="lcu_button_item">
+        <div class="lcu_button_item_left">
           <div>
             <router-link
               target="_blank"
@@ -30,14 +30,14 @@
             <input v-model="pastedataEleValue" />
             <button @click="pastedataEle">ok</button>
           </div>
-          <div class="lz_button_item_util">
+          <div class="lcu_button_item_util">
             <span
               >1、预览之前，记住要点击本地保存哦，预览，是以本地环境为准。</span
             ><br />
             <span>2、首次打开工作台，是以线上develop环境数据为准。</span>
           </div>
         </div>
-        <div class="lz_button_item_right">
+        <div class="lcu_button_item_right">
           <div>
             <label>Source：</label>
             <select @change="sourceValChange" v-model="sourceValue">
@@ -105,8 +105,8 @@
         </div>
       </div>
     </div>
-    <div class="lz_header_style">
-      <div class="lz_header_style_left">
+    <div class="lcu_header_style">
+      <div class="lcu_header_style_left">
         自适应：
         <span>
           <input
@@ -127,7 +127,7 @@
           />横向
         </span>
       </div>
-      <div class="lz_header_style_right">
+      <div class="lcu_header_style_right">
         <span>
           推荐像素：
           <select @change="sel($event)">
@@ -195,7 +195,7 @@
       </div>
     </div>
   </div>
-  <div class="lz_details" v-if="detailBll">
+  <div class="lcu_details" v-if="detailBll">
     <span @click="close">关闭</span>
     <h4>
       在线地址：
@@ -723,57 +723,57 @@ export default class homeHeader extends Vue {
 </script>
 
 <style lang="scss">
-.lz_header {
+.lcu_header {
   height: 20%;
   width: 100%;
 }
-.lz_header_util {
+.lcu_header_util {
   width: 100%;
   text-align: left;
 }
-.lz_header_tool {
+.lcu_header_tool {
   height: 5rem;
   width: 100%;
   text-align: left;
-  .lz_button_item_util {
+  .lcu_button_item_util {
     span {
       color: brown;
       font-size: 10px;
     }
   }
-  .lz_button_item {
+  .lcu_button_item {
     display: flex;
   }
-  .lz_button_item button {
+  .lcu_button_item button {
     margin: 2px;
   }
-  .lz_button_item_left {
+  .lcu_button_item_left {
     width: 50%;
   }
-  .lz_button_item_right {
+  .lcu_button_item_right {
     width: 50%;
     text-align: right;
   }
 }
-.lz_header_style {
+.lcu_header_style {
   height: 2rem;
   width: 100%;
   display: flex;
 }
 
-.lz_header_style_left {
+.lcu_header_style_left {
   text-align: left;
   width: 40%;
 }
 
-.lz_header_style_right {
+.lcu_header_style_right {
   text-align: right;
   width: 60%;
   input {
     width: 38px;
   }
 }
-.lz_details {
+.lcu_details {
   position: fixed;
   width: 250px;
   height: 270px;

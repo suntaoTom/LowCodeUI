@@ -1,9 +1,9 @@
 <template>
-  <div class="lz_project_members">
-    <div class="lz_setup">
-      <div class="lz_group">
+  <div class="lcu_project_members">
+    <div class="lcu_setup">
+      <div class="lcu_group">
         <label>Select members to invite</label>
-        <div class="lz_group_from">
+        <div class="lcu_group_from">
           <el-select
             style="width: 90%;"
             v-model="value"
@@ -30,9 +30,9 @@
           </el-select>
         </div>
       </div>
-      <div class="lz_group">
+      <div class="lcu_group">
         <label>Choose a role permission</label>
-        <div class="lz_group_from">
+        <div class="lcu_group_from">
           <el-select
             v-model="permission_value"
             placeholder="请选择"
@@ -49,8 +49,8 @@
           </el-select>
         </div>
       </div>
-      <div class="lz_group">
-        <div class="lz_group_from">
+      <div class="lcu_group">
+        <div class="lcu_group_from">
           <el-button
             @click="add"
             :disabled="!(value.length > 0 && permission_value !== '')"
@@ -59,15 +59,15 @@
         </div>
       </div>
     </div>
-    <div class="lz_members_groups">
+    <div class="lcu_members_groups">
       <ul>
         <li v-for="item in userRole">
-          <div class="lz_members_groups_user">
+          <div class="lcu_members_groups_user">
             <el-avatar icon="el-icon-user-solid"></el-avatar>
             <h4>{{ item.chinese_name }}</h4>
             <h6>@{{ item.name }}</h6>
           </div>
-          <div class="lz_members_groups_util">
+          <div class="lcu_members_groups_util">
             <el-select
               v-model="item.permission"
               placeholder="请选择"
@@ -202,23 +202,23 @@ export default class ProjectMembers extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-.lz_project_members {
+.lcu_project_members {
   width: 100%;
   height: 100%;
   text-align: left;
 }
-.lz_setup {
+.lcu_setup {
   width: 100%;
   padding-left: 50px;
-  .lz_group_from {
+  .lcu_group_from {
     margin: 10px;
   }
 }
-.lz_members_groups {
+.lcu_members_groups {
   width: 100%;
   height: 60%;
   overflow: auto;
-  .lz_members_groups_user {
+  .lcu_members_groups_user {
     width: 50%;
     display: inline-flex;
     .el-avatar--large {
@@ -228,7 +228,7 @@ export default class ProjectMembers extends Vue {
       margin-left: 5px;
     }
   }
-  .lz_members_groups_util {
+  .lcu_members_groups_util {
     width: 50%;
     .el-button.is-circle {
       margin-left: 10px;
