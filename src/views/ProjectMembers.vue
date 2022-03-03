@@ -61,7 +61,7 @@
     </div>
     <div class="lcu_members_groups">
       <ul>
-        <li v-for="item in userRole">
+        <li v-for="item in userRole" :key="item">
           <div class="lcu_members_groups_user">
             <el-avatar icon="el-icon-user-solid"></el-avatar>
             <h4>{{ item.chinese_name }}</h4>
